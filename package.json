@@ -18,7 +18,9 @@
     "eventemitter2": "0.4.x",
     "reconnect": "0.1.x",
     "riak": "1.0.x",
-    "cycle": "~1.0.0"
+    "cycle": "~1.0.0",
+    "binaryjs": "~0.1.4",
+    "poolee": "*"
   },
   "subdomain": "streamingUpload",
   "scripts": {

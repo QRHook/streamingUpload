@@ -18,11 +18,11 @@ root.index = function index () {
 
 	if(browser.name === 'IE') {
 
-		readstream = filed(__dirname + '/../views/ie.html', {encoding: 'utf8'});
+		readstream = filed(__dirname + '/../views/ie.html');
 
 	} else {
 
-		readstream = filed(__dirname + '/../views/index.html', {encoding: 'utf8'});
+		readstream = filed(__dirname + '/../views/index.html');
 
 	}
 

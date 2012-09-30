@@ -6,6 +6,7 @@ var flatiron = require('flatiron'),
 	logger = require('./lib/logger'),
 	version = require('./middleware/version'),
 	log = require('./middleware/log'),
+	socket = require('./binarySocket'),
 	app = flatiron.app,
 	environment	= exports;
 
@@ -45,11 +46,11 @@ environment.start = function start(app, cb) {
 
 	});
 
-	// socket.start(app.server, function() {
+	socket.start(app.server, function() {
 
-	// 	logger.log({'sock': 'server is strapped', 'status': 'winning'}, 'info');
+		logger.log({'sock': 'server is strapped', 'status': 'winning'}, 'info');
 
-	// });
+	});
 
 
 };

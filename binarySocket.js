@@ -53,6 +53,7 @@ binarySocket.start = function (server, callback) {
 
 	});
 
+	callback();
 
 };
 

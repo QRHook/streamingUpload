@@ -36,19 +36,12 @@ var Main = {
     			var outputString;
     			var i=0;
 
-    			
-
     			//var tx = [];
 
     			var children; //$('#fileRows').children().length;
 
     			for(i; i<files.length; i++){
     				tempFile = files[i];
-
-    				// outputString = "Name: " + tempFile.name + "\n";
-    				// outputString += "Type: " + tempFile.type + "\n";
-    				// outputString += "Size: " + tempFile.size + "\n";
-    				// outputString += "Last modified date: " + tempFile.lastModifiedDate + "\n";
 
     				children = $('#fileRows').children().length;
 
@@ -67,9 +60,11 @@ var Main = {
 	    			tempProgress.push(0);
 
 	    			// tempProgress = $('#fileProgress'+children).text(); 
+	    			//alert(children);
 
 	    			streams[children].on('data', function(data){
 	    				tempProgress[data.uniqueID] += data.rx * 100;
+	    				alert(data.uniqueID);
 	    				$('#fileProgress'+data.uniqueID).text(Math.round(tempProgress[data.uniqueID]));
 	    			});
 

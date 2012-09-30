@@ -45,7 +45,10 @@ binarySocket.start = function (server, callback) {
 
 			stream.on('data', function (data) {
 
-				stream.write({rx: data.length / meta.size, uniqueId: meta.uniqueId});
+				stream.write({
+					rx: data.length / meta.size,
+					uniqueID: meta.uniqueID
+				});
 
 			});
 

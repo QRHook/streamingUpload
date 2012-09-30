@@ -64,7 +64,7 @@ var Main = {
 
 	    			streams[children].on('data', function(data){
 	    				tempProgress[data.uniqueID] += data.rx * 100;
-	    				alert(data.uniqueID);
+	    				// alert(data.uniqueID);
 	    				$('#fileProgress'+data.uniqueID).text(Math.round(tempProgress[data.uniqueID]));
 	    			});
 

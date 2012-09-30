@@ -12,7 +12,8 @@ var Main = {
 
     	client.on('open',function(){
 
-      		$('#content').bind('drop', function(e){
+      		// $('#content').bind('drop', function(e){
+      		$('body').bind('drop', function(e){
       			alert("Shithead!!!");
 
 	        	e.originalEvent.preventDefault();

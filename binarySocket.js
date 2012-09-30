@@ -21,6 +21,8 @@ binarySocket.start = function (server, callback) {
 
 			// stream.pipe(file);
 
+			console.log(meta);
+
 			pool.request({
 				path: '/riak/pictures/' + meta.name,
 				method: 'PUT',
@@ -31,11 +33,11 @@ binarySocket.start = function (server, callback) {
 
 				if(!err && res) {
 
-					callback(null, res);
+					console.log(res);
 
 				} else {
 
-					callback(err, null);
+					console.log(err);
 
 				}
 

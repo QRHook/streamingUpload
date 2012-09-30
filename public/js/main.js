@@ -20,6 +20,9 @@ var Main = {
 		// Main.resize();
 		var client = new BinaryClient('ws://localhost:3000');
 
+		var streams = [];
+    	var tempProgress = [];
+
     	client.on('open',function(){
 
     		$('#dropZone').on('drop',function(e){
@@ -33,12 +36,11 @@ var Main = {
     			var outputString;
     			var i=0;
 
-    			var streams = [];
+    			
+
     			//var tx = [];
 
     			var children; //$('#fileRows').children().length;
-
-    			var tempProgress;
 
     			for(i; i<files.length; i++){
     				tempFile = files[i];
@@ -50,7 +52,7 @@ var Main = {
 
     				children = $('#fileRows').children().length;
 
-    				outputString = '<div class="fileListing"><div>File: ' + tempFile.name + '</div><div>File Progress:&nbsp;<span id="fileProgress' + children + '">0</span></div></div>';
+    				outputString = '<div class="fileListing"><div>File: ' + tempFile.name + '</div><div>File Progress:&nbsp;<span id="fileProgress' + children + '">0</span>% complete</div></div>';
 
     				$('#fileRows').append(outputString); 
 
@@ -58,19 +60,23 @@ var Main = {
 	    				'name': tempFile.name,
 	    				'type': tempFile.type,
 	    				'size': tempFile.size,
+	    				'uniqueID': children,
 	    				'lastModified': tempFile.lastModifiedDate
 	    			}));
 
-	    			//tx.push(0);
+	    			tempProgress.push(0);
 
-	    			tempProgress = $('#fileProgress'+children).text(); 
+	    			// tempProgress = $('#fileProgress'+children).text(); 
 
-	    			streams[i].on('data', function(data){
-	    				tempProgress += data.rx * 100;
-	    				$('#fileProgress'+children).text(Math.round(tempProgress) + '% complete');
+	    			streams[children].on('data', function(data){
+	    				tempProgress[data.uniqueID] += data.rx * 100;
+	    				$('#fileProgress'+data.uniqueID).text(Math.round(tempProgress[data.uniqueID]));
 	    			});
+
     			}
 
+    			//var tempProgress;
+    			
 
 
     		}).on('dragenter',function(e){
@@ -78,8 +84,6 @@ var Main = {
     			if(e.preventDefault){
     				e.preventDefault();
     			}
-
-    			// e.dataTransfer.dropEffect = 'move';
 
     			$(this).addClass("dragEnter");
 
@@ -93,34 +97,6 @@ var Main = {
     			this.style.opacity = '0.4';  // this / e.target is the source node.
     		});
 
-
-
-      		// $('#content').bind('drop', function(e){
-      		// $('body').bind('drop',function(e){
-      		// 	alert("Shithead!!!");
-
-	       //  	e.originalEvent.preventDefault();
-	       //  	var file = e.originalEvent.dataTransfer.files[0];
-
-		      //   // Add to list of uploaded files
-		      //   $('<div align="center"></div>').append($('<a></a>').text(file.name).prop('href', '/'+file.name)).appendTo('#content');
-
-		      //   // $('#content').append();
-
-		      //   // `client.send` is a helper function that creates a stream with the
-		      //   // given metadata, and then chunks up and streams the data.
-		      //   var stream = client.send(file,{
-		      //   	name: file.name,
-		      //   	size: file.size
-		      //   });
-
-		      //   // Print progress
-		      //   var tx = 0;
-
-		      //   stream.on('data', function(data){
-		      //     	$('#progress').text(Math.round(tx+=data.rx*100) + '% complete');
-		      //   });
-      		// });
     	});
 
 	},

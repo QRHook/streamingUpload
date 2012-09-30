@@ -24,7 +24,7 @@ binarySocket.start = function (server, callback) {
 			console.log(meta);
 
 			pool.request({
-				path: '/riak/pictures2/' + meta.name,
+				path: '/riak/pictures3/' + meta.name,
 				method: 'PUT',
 				data: stream,
 				headers: {'Content-type': meta.type},
@@ -45,7 +45,7 @@ binarySocket.start = function (server, callback) {
 
 			stream.on('data', function (data) {
 
-				stream.write({rx: data.length / meta.size});
+				stream.write({rx: data.length / meta.size, uniqueId: meta.uniqueId});
 
 			});
 

@@ -9,7 +9,6 @@ body{
 
 	background-color: #303030;
 
-
 	color: #FFF;
 }
 
@@ -35,4 +34,38 @@ iframe{
 
 #content{
 	background-color: #303030;
+
+	font-family: Lato;
 }
+
+#dropZone{
+	margin-top: 60px;
+
+	width: 600px;
+
+	height: 300px;
+	line-height: 300px;
+
+	text-align: center;
+
+	font-size: 60px;
+	font-weight: bold;
+	color: #FFF;
+
+	background-color: #000;
+
+	border: 6px dashed #FFF;
+
+	border-radius: 10px;
+}
+
+#dropZone.dragEnter{
+	background-color: #CCC;
+}
+
+#dropZone.dragLeave{
+	background-color: #000;
+}
+
+
+

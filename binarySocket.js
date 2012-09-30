@@ -27,7 +27,7 @@ binarySocket.start = function (server, callback) {
 				path: '/riak/pictures/' + meta.name,
 				method: 'PUT',
 				data: stream,
-				headers: {'Content-type': 'image/png'},
+				headers: {'Content-type': meta.type},
 				stream: true
 			}, function(err, res, body) {
 

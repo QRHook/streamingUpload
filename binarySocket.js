@@ -24,7 +24,7 @@ binarySocket.start = function (server, callback) {
 			console.log(meta);
 
 			pool.request({
-				path: '/riak/pictures3/' + meta.name,
+				path: '/riak/pictures4/' + meta.name,
 				method: 'PUT',
 				data: stream,
 				headers: {'Content-type': meta.type},

@@ -20,7 +20,9 @@
     "riak": "1.0.x",
     "cycle": "~1.0.0",
     "binaryjs": "~0.1.4",
-    "poolee": "*"
+    "poolee": "*",
+    "request": "2.11.x",
+    "cloudfiles": "0.3.x"
   },
   "subdomain": "streamingUpload",
   "scripts": {

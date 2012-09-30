@@ -1,7 +1,7 @@
 {
-  "name": "blackTemplate",
-  "description": "QR Hook's default node server template",
-  "version": "0.0.0-9",
+  "name": "streamingUpload",
+  "description": "Test to see how we can do streaming uploads to the database",
+  "version": "0.0.0",
   "dependencies": {
     "flatiron": "0.2.x",
     "union": "0.3.x",
@@ -20,7 +20,7 @@
     "riak": "1.0.x",
     "cycle": "~1.0.0"
   },
-  "subdomain": "blackTemplate",
+  "subdomain": "streamingUpload",
   "scripts": {
     "start": "node server.js"
   },

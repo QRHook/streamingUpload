@@ -1,4 +1,3 @@
-## Template
+## Streaming Upload
 
-Default template used at QR Hook LLC
-
+Upload a file to the server through streams over websockets

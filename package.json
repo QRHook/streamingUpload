@@ -1,0 +1,30 @@
+{
+  "name": "blackTemplate",
+  "description": "QR Hook's default node server template",
+  "version": "0.0.0-9",
+  "dependencies": {
+    "flatiron": "0.2.x",
+    "union": "0.3.x",
+    "ecstatic": "0.1.x",
+    "utile": "0.1.x",
+    "errs": "0.2.x",
+    "winston": "0.6.x",
+    "platform": "*",
+    "oppressor": "0.0.x",
+    "filed": "git://github.com/mikeal/filed.git#master",
+    "shoe": "0.0.x",
+    "emit-stream": "0.1.x",
+    "JSONStream": "0.4.x",
+    "eventemitter2": "0.4.x",
+    "reconnect": "0.1.x",
+    "riak": "1.0.x",
+    "cycle": "~1.0.0"
+  },
+  "subdomain": "blackTemplate",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  }
+}

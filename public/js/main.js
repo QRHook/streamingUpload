@@ -27,34 +27,33 @@ var Main = {
 
     			var evt = e.originalEvent;
 
-
-
-    			// var files = e.target.dataTransfer.files;
-
-    			// var dt = evt.dataTransfer;
-
-    			// var files = dt.files;
-
     			var files = evt.dataTransfer.files;
 
     			var tempFile;
     			var outputString;
     			var i=0;
+
     			var streams = [];
+    			//var tx = [];
 
-    			// var tempPercent;
+    			var children; //$('#fileRows').children().length;
 
-    			var tx;
+    			var tempProgress;
 
     			for(i; i<files.length; i++){
     				tempFile = files[i];
 
-    				outputString = "Name: " + tempFile.name + "\n";
-    				outputString += "Type: " + tempFile.type + "\n";
-    				outputString += "Size: " + tempFile.size + "\n";
-    				outputString += "Last modified date: " + tempFile.lastModifiedDate + "\n";
+    				// outputString = "Name: " + tempFile.name + "\n";
+    				// outputString += "Type: " + tempFile.type + "\n";
+    				// outputString += "Size: " + tempFile.size + "\n";
+    				// outputString += "Last modified date: " + tempFile.lastModifiedDate + "\n";
 
-	    			// alert(outputString)
+    				children = $('#fileRows').children().length;
+
+    				outputString = '<div class="fileListing"><div>File: ' + tempFile.name + '</div><div>File Progress:&nbsp;<span id="fileProgress' + children + '">0</span></div></div>';
+
+    				$('#fileRows').append(outputString); 
+
 	    			streams.push(client.send(tempFile,{
 	    				'name': tempFile.name,
 	    				'type': tempFile.type,
@@ -62,13 +61,14 @@ var Main = {
 	    				'lastModified': tempFile.lastModifiedDate
 	    			}));
 
-	    			tx = 0;
+	    			//tx.push(0);
+
+	    			tempProgress = $('#fileProgress'+children).text(); 
+
 	    			streams[i].on('data', function(data){
-	    				tx += data.rx * 100;
-	    				$('#progress').text(Math.round(tx) + '% complete');
+	    				tempProgress += data.rx * 100;
+	    				$('#fileProgress'+children).text(Math.round(tempProgress) + '% complete');
 	    			});
-
-
     			}
 
 

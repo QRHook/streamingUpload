@@ -22,7 +22,9 @@
     "binaryjs": "~0.1.4",
     "poolee": "*",
     "request": "2.11.x",
-    "cloudfiles": "0.3.x"
+    "cloudfiles": "0.3.x",
+    "mime": "1.2.x",
+    "pause-stream": "0.0.x"
   },
   "subdomain": "streamingUpload",
   "scripts": {

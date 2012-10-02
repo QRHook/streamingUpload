@@ -5,6 +5,7 @@ var BinaryServer = require('binaryjs').BinaryServer,
 	Pool = require('poolee'),
 	rackspace = require('./lib/rackspace'),
 	logger = require('./lib/logger'),
+	mime = require('mime'),
 	bs,
 	binarySocket = exports;
 

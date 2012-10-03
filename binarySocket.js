@@ -5,14 +5,12 @@ var BinaryServer = require('binaryjs').BinaryServer,
 	Pool = require('poolee'),
 	rackspace = require('./lib/rackspace'),
 	logger = require('./lib/logger'),
-	mime = require('mime'),
 	bs,
 	binarySocket = exports;
 
-
 binarySocket.start = function (server, callback) {
 
-	var pool = new Pool(require('http'), ["127.0.0.1:8098"]);
+	//var pool = new Pool(require('http'), ["127.0.0.1:8098"]);
 
 	bs = BinaryServer({server: server});
 
@@ -26,7 +24,7 @@ binarySocket.start = function (server, callback) {
 
 			console.log(meta);
 
-			rackspace.addFile('newTest', meta.name, stream, function (err, res) {
+			rackspace.addFile(meta.type, meta.name, stream, function (err, res) {
 
 				var thing;
 

@@ -3,7 +3,7 @@
 var BinaryServer = require('binaryjs').BinaryServer,
 	filed = require('filed'),
 	Pool = require('poolee'),
-	rackspace = require('./lib/rackspace'),
+	organize = require('./lib/organize'),
 	logger = require('./lib/logger'),
 	bs,
 	binarySocket = exports;
@@ -24,7 +24,7 @@ binarySocket.start = function (server, callback) {
 
 			console.log(meta);
 
-			rackspace.addFile(meta.type, meta.name, stream, function (err, res) {
+			organize(meta.type, meta.name, stream, function (err, res) {
 
 				var thing;
 

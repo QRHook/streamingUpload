@@ -15,9 +15,10 @@ var Main = {
 		//   alert('The File APIs are not fully supported in this browser.');
 		// }
 
+        window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
 
+/*
 
-		// Main.resize();
 		var client = new BinaryClient('ws://localhost:3000');
 
 		var streams = [];
@@ -70,29 +71,30 @@ var Main = {
 
     			}
 
-    			//var tempProgress;
-    			
+    		})
 
-
-    		}).on('dragenter',function(e){
-    			// e.preventDefault();
+            $('#dropZone').on('dragenter',function(e){
     			if(e.preventDefault){
     				e.preventDefault();
     			}
 
     			$(this).addClass("dragEnter");
+    		})
 
-    			// return false;
-    		}).on('dragleave',function(e){
+            $('#dropZone').on('dragleave',function(e){
 
     			e.preventDefault();
     			$(this).removeClass("dragOver");
 
-    		}).on('dragstart',function(e){
-    			this.style.opacity = '0.4';  // this / e.target is the source node.
+    		})
+
+            $('#dropZone').on('dragstart',function(e){
+                this.style.opacity = '0.4';
     		});
 
     	});
+
+*/
 
 	},
 	resize:function(){

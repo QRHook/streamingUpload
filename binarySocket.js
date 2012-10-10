@@ -3,13 +3,14 @@
 var BinaryServer = require('binaryjs').BinaryServer,
 	filed = require('filed'),
 	Pool = require('poolee'),
+	organize = require('./lib/organize'),
+	logger = require('./lib/logger'),
 	bs,
 	binarySocket = exports;
 
-
 binarySocket.start = function (server, callback) {
 
-	var pool = new Pool(require('http'), ["127.0.0.1:8098"]);
+	//var pool = new Pool(require('http'), ["127.0.0.1:8098"]);
 
 	bs = BinaryServer({server: server});
 
@@ -23,23 +24,9 @@ binarySocket.start = function (server, callback) {
 
 			console.log(meta);
 
-			pool.request({
-				path: '/riak/pictures3/' + meta.name,
-				method: 'PUT',
-				data: stream,
-				headers: {'Content-type': meta.type},
-				stream: true
-			}, function(err, res, body) {
+			organize(meta.type, meta.name, stream, function (err, res) {
 
-				if(!err && res) {
-
-					console.log(res);
-
-				} else {
-
-					console.log(err);
-
-				}
+				var thing;
 
 			});
 

@@ -7,6 +7,7 @@ var flatiron = require('flatiron'),
 	version = require('./middleware/version'),
 	log = require('./middleware/log'),
 	socket = require('./binarySocket'),
+	bootstrapper = require('./bootstrapper'),
 	app = flatiron.app,
 	environment	= exports;
 
@@ -38,19 +39,22 @@ environment.initialize = function initialize (callback) {
 
 environment.start = function start(app, cb) {
 
-	app.start(config.www.port, function () {
+	bootstrapper.setup(function () {
 
-		logger.log({'blackTemplate': 'change this shit', 'status': 'ok', 'port': config.www.port}, 'info');
+		app.start(config.www.port, function () {
 
-		if(cb) { cb(); }
+			logger.log({'blackTemplate': 'change this shit', 'status': 'ok', 'port': config.www.port}, 'info');
+
+			if(cb) { cb(); }
+
+		});
+
+		socket.start(app.server, function() {
+
+			logger.log({'sock': 'server is strapped', 'status': 'winning'}, 'info');
+
+		});
 
 	});
-
-	socket.start(app.server, function() {
-
-		logger.log({'sock': 'server is strapped', 'status': 'winning'}, 'info');
-
-	});
-
 
 };

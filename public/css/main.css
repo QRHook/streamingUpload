@@ -33,6 +33,9 @@ iframe{
 */
 
 #content{
+	width: 100%;
+	height: 100%;
+
 	background-color: #303030;
 
 	font-family: Lato;

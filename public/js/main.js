@@ -17,7 +17,7 @@ var Main = {
 
         window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
 
-/*
+
 
 		var client = new BinaryClient('ws://localhost:3000');
 
@@ -71,7 +71,7 @@ var Main = {
 
     			}
 
-    		})
+    		});
 
             $('#dropZone').on('dragenter',function(e){
     			if(e.preventDefault){
@@ -79,14 +79,14 @@ var Main = {
     			}
 
     			$(this).addClass("dragEnter");
-    		})
+    		});
 
             $('#dropZone').on('dragleave',function(e){
 
     			e.preventDefault();
     			$(this).removeClass("dragOver");
 
-    		})
+    		});
 
             $('#dropZone').on('dragstart',function(e){
                 this.style.opacity = '0.4';
@@ -94,11 +94,11 @@ var Main = {
 
     	});
 
-*/
+
 
 	},
 	resize:function(){
-		Win.init();
+		// Win.init();
 	}
 }
 
